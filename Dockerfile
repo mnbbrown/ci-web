@@ -1,21 +1,9 @@
-FROM gliderlabs/alpine
+FROM ubuntu
+MAINTAINER David Weinstein <david@bitjudo.com>
 
-ENV VERSION=v5.0.0 NPM_VERSION=3
+# install our dependencies and nodejs
+RUN apt-get update && apt-get install -y curl build-essential
+RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
+    sudo apt-get install -y nodejs
 
-# For base builds
-ENV CONFIG_FLAGS="--fully-static" DEL_PKGS="libgcc libstdc++" RM_DIRS=/usr/include
-
-RUN apk add --update curl make gcc g++ python linux-headers paxctl libgcc libstdc++ && \
-  curl -sSL https://nodejs.org/dist/${VERSION}/node-${VERSION}.tar.gz | tar -xz && \
-  cd /node-${VERSION} && \
-  ./configure --prefix=/usr ${CONFIG_FLAGS} && \
-  make -j$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
-  make install && \
-  paxctl -cm /usr/bin/node && \
-  cd / && \
-  if [ -x /usr/bin/npm ]; then \
-    npm install -g npm@${NPM_VERSION} && \
-    find /usr/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf; \
-  fi
-
-RUN npm install -g gulp bower node-gyp
+RUN npm install -g bower node-gyp webpack
