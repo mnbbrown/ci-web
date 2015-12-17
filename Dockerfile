@@ -1,9 +1,5 @@
-FROM ubuntu
-MAINTAINER David Weinstein <david@bitjudo.com>
+FROM mhart/alpine-node
+MAINTAINER Matthew Brown <me@matthewbrown.io>
 
 # install our dependencies and nodejs
-RUN apt-get update && apt-get install -y curl build-essential
-RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
-    sudo apt-get install -y nodejs
-
-RUN npm install -g bower node-gyp webpack
+RUN apk add --update build-base python libpng-dev bash nasm autoconf
