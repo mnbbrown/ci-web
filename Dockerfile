@@ -1,7 +1,5 @@
-FROM mhart/alpine-node
+FROM mhart/alpine-node:latest
 MAINTAINER Matthew Brown <me@matthewbrown.io>
 
-# install our dependencies and nodejs
-RUN apk add --update build-base python libpng-dev bash nasm autoconf
-
-ENTRYPOINT ["/bin/sh"]
+RUN apk add --update gcc g++ make python git libpng-dev nasm autoconf
+RUN npm install -g webpack
