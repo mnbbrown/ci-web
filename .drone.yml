@@ -7,7 +7,6 @@ publish:
         tag:
             - $$COMMIT
             - latest
-        storage_driver: overlay
 
 cache:
     mount:
