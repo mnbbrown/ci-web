@@ -10,8 +10,8 @@ publish:
         storage_driver: overlay
 
 cache:
-  mount:
-    - docker/image.tar
+    mount:
+        - docker/image.tar
 
 notify:
     slack:
