@@ -9,9 +9,13 @@ publish:
             - latest
         storage_driver: overlay
 
+cache:
+  mount:
+    - docker/image.tar
+
 notify:
     slack:
-        webhook_url: https://hooks.slack.com/services/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
+        webhook_url: $$SLACK_WEBHOOK_URL
         channel: devops
         username: drone
 
