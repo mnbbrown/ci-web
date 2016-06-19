@@ -2,7 +2,7 @@ publish:
     docker:
         repo: mnbbrown/ci-web
         username: mnbbrown
-        password: $$DOCKER_HUB_PASSWORD
+        password: "$$DOCKER_HUB_PASSWORD"
         email: me@matthewbrown.io
         tag:
             - $$COMMIT
