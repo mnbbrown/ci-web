@@ -1,6 +1,6 @@
 publish:
     docker:
-        repo: mnbbrown/ci-web
+        repo: catalystandco/ci-web
         username: mnbbrown
         password: "$$DOCKER_HUB_PASSWORD"
         email: me@matthewbrown.io
